@@ -105,7 +105,9 @@ module.exports = function (self) {
                 const pubkey = writer.key.toString("hex")
                 console.log("my feed key is", pubkey)
             
-                swarm.join(discoveryKey, { lookup: true, announce: true })
+                swarm.join(discoveryKey, { lookup: true, announce: true }, function() {
+                    console.log("On join called...")
+                })
                 swarm.on("connection", (socket, info) => {
                     console.log("connection!")
                     const r = core.replicate(info.client)
