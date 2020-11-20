@@ -1,4 +1,4 @@
-const useRamStorage = false // todo: make RAM storage configurable again
+const useRamStorage = true // todo: make RAM storage configurable again
 
 console.log("Using RAM storage: " + useRamStorage)
 

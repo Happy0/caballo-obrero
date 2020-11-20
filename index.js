@@ -1,6 +1,8 @@
 const CaballoCore = require('./core')
+const pull = require('pull-stream')
 
 function addMessage (msg) {
+    console.log("Adding message: " + msg)
     const prev = document.getElementById("chat").textContent 
     // place new messages at the top, so we don't have to attach autoscrolling javascript to the textarea
     document.getElementById("chat").textContent = msg + "\n" + prev 

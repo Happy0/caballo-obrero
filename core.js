@@ -46,15 +46,17 @@ module.exports = function() {
             var body = makeMessageModel(message)
             pending[sequenceNumber] = cb
 
-            sendToWorker("addMessage", body)            
+            sendToWorker("addMessage", sequenceNumber, body)            
             sequenceNumber = sequenceNumber + 1
         },
-        getMessageStream: function() {
+        getMessageStream: function(cb) {
             var pushable = Pushable()
             pending[sequenceNumber] = pushable
 
-            sendToWorker("getMessageStream", {})
+            sendToWorker("getMessageStream", sequenceNumber, {})
             sequenceNumber = sequenceNumber + 1
+
+            cb(null, pushable)
         }
     }
 }
